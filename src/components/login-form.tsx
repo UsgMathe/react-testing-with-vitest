@@ -19,6 +19,7 @@ export function LoginForm({
         placeholder="Email"
         value={email}
         onChange={e => setEmail(e.target.value)}
+        autoFocus
       />
       <input
         placeholder="Password"
@@ -26,7 +27,9 @@ export function LoginForm({
         value={password}
         onChange={e => setPassword(e.target.value)}
       />
-      <button type="submit">Login</button>
+      <button disabled={!email || !password} type="submit">
+        Login
+      </button>
     </form>
   );
 }
