@@ -54,7 +54,7 @@ describe('LoginForm', () => {
     expect(onLoginFn).not.toHaveBeenCalled();
   });
 
-  test('can type email and password', () => {
+  test('user can type email and password', () => {
     const { emailInput, passwordInput } = setup();
     fillsForm(emailInput, passwordInput);
     expect(emailInput).toHaveValue(email);

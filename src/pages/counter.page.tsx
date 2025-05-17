@@ -1,15 +1,34 @@
 import { useState } from 'react';
 import { Button } from '../components/button';
 
-export function CounterPage() {
-  const [counter, setCounter] = useState<number>(0);
+export interface CounterPageProps {
+  initial?: number;
+  min?: number;
+  max?: number;
+}
+export function CounterPage({ initial = 0, min, max }: CounterPageProps) {
+  const [counter, setCounter] = useState<number>(initial);
+
+  const handleIncrement = () => {
+    setCounter(counter => {
+      if (max && counter >= max) return counter;
+      return counter + 1;
+    });
+  };
+  const handleDecrement = () => {
+    setCounter(counter => {
+      if (min && counter <= min) return counter;
+      return counter - 1;
+    });
+  };
 
   return (
     <div className="min-h-screen min-w-screen flex flex-col items-center justify-center gap-2">
       <div className="flex items-center justify-center  gap-10 text-white">
         <Button
+          disabled={counter == min}
           className="!w-fit"
-          onClick={() => setCounter(counter => counter - 1)}
+          onClick={handleDecrement}
         >
           -
         </Button>
@@ -22,8 +41,9 @@ export function CounterPage() {
         </p>
 
         <Button
+          disabled={counter == max}
           className="!w-fit"
-          onClick={() => setCounter(counter => counter + 1)}
+          onClick={handleIncrement}
         >
           +
         </Button>
