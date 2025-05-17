@@ -2,11 +2,11 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, test } from 'vitest';
 
-import { CounterPage, type CounterPageProps } from './counter.page';
+import { Counter, type CounterProps } from './counter';
 
-describe('CounterPage', () => {
-  const setup = (props?: CounterPageProps) => {
-    render(<CounterPage {...props} />);
+describe('Counter', () => {
+  const setup = (props?: CounterProps) => {
+    render(<Counter {...props} />);
 
     const counter = screen.getByTestId('counter');
     const incrementButton = screen.getByRole('button', { name: '+' });
