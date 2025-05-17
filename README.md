@@ -3,7 +3,7 @@
 #### 1. Instalar as dependências necessárias
 
 ```bash
-nmp i -D @testing-library/dom @testing-library/jest-dom @testing-library/react jsdom vitest
+npm i -D @testing-library/dom @testing-library/jest-dom @testing-library/react @testing-library/user-event jsdom vitest
 ```
 
 #### 2. Configurar o `vitest.config.js`
